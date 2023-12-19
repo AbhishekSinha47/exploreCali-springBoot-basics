@@ -58,6 +58,11 @@ public class ExplorecaliApplication implements CommandLineRunner {
      * Create tour entities from an external file
      */
     private void createTours(String fileToImport) throws IOException {
+        /*
+        Can simply use Gson for converting json records to Tour Object.
+        Refer - https://stackoverflow.com/questions/18638229/converting-json-from-a-file-to-a-java-object
+         */
+
         TourFromFile.read(fileToImport).forEach(importedTour ->
             tourService.createTour(importedTour.getTitle(),
                     importedTour.getDescription(),
